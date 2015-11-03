@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/loopline-systems/electron-builder",
   "dependencies": {
-    "fs-extra": "^0.26.0",
+    "fs-extra": "^0.26.2",
     "lodash.assign": "^3.2.0",
     "lodash.camelcase": "^3.0.1",
     "lodash.template": "^3.6.1",
