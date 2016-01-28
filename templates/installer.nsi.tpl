@@ -82,6 +82,12 @@ Section
   CreateShortCut "$SMPROGRAMS\${APP_DIR}\Uninstall ${APP_NAME}.lnk" "$INSTDIR\Uninstall ${APP_NAME}.exe"
   CreateShortCut "$DESKTOP\${APP_NAME}.lnk" "$INSTDIR\${APP_NAME}.exe" "" "$INSTDIR\icon.ico"
 
+  <% if(bootOnStartup){ %>
+  # boot app on startup
+  CreateShortCut "$SMSTARTUP\${APP_NAME}.lnk" "$INSTDIR\${APP_NAME}.exe"
+  <% } %>
+
+
   WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APP_NAME}" \
                    "DisplayName" "${APP_NAME}"
   WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APP_NAME}" \
@@ -115,6 +121,10 @@ Section "Uninstall"
   delete "$SMPROGRAMS\${APP_DIR}\Uninstall ${APP_NAME}.lnk"
   rmDir  "$SMPROGRAMS\${APP_DIR}"
   delete "$DESKTOP\${APP_NAME}.lnk"
+  <% if(bootOnStartup){ %>
+  delete "$SMSTARTUP\${APP_NAME}.lnk"
+  <% } %>
+
 
 
   DeleteRegKey HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APP_NAME}"
