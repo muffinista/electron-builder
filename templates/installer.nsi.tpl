@@ -82,7 +82,7 @@ Section
   CreateShortCut "$SMPROGRAMS\${APP_DIR}\Uninstall ${APP_NAME}.lnk" "$INSTDIR\Uninstall ${APP_NAME}.exe"
   CreateShortCut "$DESKTOP\${APP_NAME}.lnk" "$INSTDIR\${APP_NAME}.exe" "" "$INSTDIR\icon.ico"
 
-  <% if(bootOnStartup){ %>
+  <% if(bootOnStartup === true){ %>
   # boot app on startup
   CreateShortCut "$SMSTARTUP\${APP_NAME}.lnk" "$INSTDIR\${APP_NAME}.exe"
   <% } %>
